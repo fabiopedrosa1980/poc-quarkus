@@ -1,5 +1,7 @@
 package br.com.pedrosa.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,11 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Cliente {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Cliente extends PanacheEntity {
 
     @NotEmpty(message = "Nome é obrigatorio")
     private String nome;

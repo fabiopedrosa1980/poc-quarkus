@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class ClienteResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testGetClientes() {
         given()
           .when().get("/cliente")
           .then()
