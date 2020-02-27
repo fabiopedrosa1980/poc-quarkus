@@ -19,8 +19,7 @@ public class ClienteService {
     }
 
     public Cliente getById(Long id) {
-        return (Cliente) entityManager.createQuery("SELECT c FROM Cliente  c WHERE c.id = " + id)
-                .getSingleResult();
+        return entityManager.find(Cliente.class,id);
     }
 
     @Transactional
@@ -39,9 +38,8 @@ public class ClienteService {
     }
 
     @Transactional
-    public void deleteById(String id) {
-        Cliente c = (Cliente) entityManager.createQuery("SELECT c FROM Cliente  c WHERE c.id = " + id)
-                .getSingleResult();
+    public void deleteById(Long id) {
+        Cliente c = getById(id);
         entityManager.remove(c);
     }
 }

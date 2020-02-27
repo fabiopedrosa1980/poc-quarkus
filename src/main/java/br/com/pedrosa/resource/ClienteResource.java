@@ -49,7 +49,7 @@ public class ClienteResource {
 
     @Path("{id}")
     @DELETE
-    public Response deletePost(@PathParam("id") final String id) {
+    public Response delete(@PathParam("id") final Long id) {
         this.clienteService.deleteById(id);
         return noContent().build();
     }
