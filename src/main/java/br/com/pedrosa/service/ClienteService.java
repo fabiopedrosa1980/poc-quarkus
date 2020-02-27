@@ -1,45 +1,39 @@
 package br.com.pedrosa.service;
 
 import br.com.pedrosa.model.Cliente;
+import br.com.pedrosa.repository.ClienteRepository;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
 public class ClienteService {
 
-    @PersistenceContext
-    EntityManager entityManager;
+    @Inject
+    ClienteRepository clienteRepository;
 
     public List<Cliente> list() {
-        return entityManager.createQuery("select c from Cliente c").getResultList();
+        return clienteRepository.list();
     }
 
     public Cliente getById(Long id) {
-        return entityManager.find(Cliente.class,id);
+        return clienteRepository.getById(id);
     }
 
     @Transactional
     public Cliente update(Long id, Cliente cliente){
-        Cliente existed = getById(id);
-        existed.setNome(cliente.getNome());
-        existed.setIdade(cliente.getIdade());
-        entityManager.persist(existed);
-        return existed;
+        return clienteRepository.update(id,cliente);
     }
 
     @Transactional
     public Cliente save(Cliente cliente) {
-        entityManager.persist(cliente);
-        return cliente;
+        return clienteRepository.save(cliente);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        Cliente c = getById(id);
-        entityManager.remove(c);
+        clienteRepository.deleteById(id);
     }
 }
