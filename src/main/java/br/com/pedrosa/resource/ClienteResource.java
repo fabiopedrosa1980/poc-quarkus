@@ -6,8 +6,10 @@ import br.com.pedrosa.service.ClienteService;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class ClienteResource {
 
     @Inject
     ClienteService clienteService;
+
+    @Context
+    UriInfo uriInfo;
 
     @GET
     public List<Cliente> listAll() {
@@ -36,7 +41,11 @@ public class ClienteResource {
     @POST
     public Response save(@Valid Cliente cliente) {
         clienteService.save(cliente);
-        return created(URI.create("localhost:8080/cliente/"+cliente.getId())).entity(cliente).build();
+        URI location = uriInfo.getAbsolutePathBuilder()
+                .path("{id}")
+                .resolveTemplate("id", cliente.getId())
+                .build();
+        return created(location).entity(cliente).build();
     }
 
     @Path("{id}")
