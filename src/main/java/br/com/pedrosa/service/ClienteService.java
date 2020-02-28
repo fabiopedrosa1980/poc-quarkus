@@ -2,6 +2,7 @@ package br.com.pedrosa.service;
 
 import br.com.pedrosa.model.Cliente;
 import br.com.pedrosa.repository.ClienteRepository;
+import io.quarkus.cache.CacheResult;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ public class ClienteService {
     @Inject
     ClienteRepository clienteRepository;
 
-    public List<Cliente> list() {
+    public List<Cliente> listAll() {
         return clienteRepository.listAll();
     }
 

@@ -23,8 +23,8 @@ public class ClienteResource {
     ClienteService clienteService;
 
     @GET
-    public List<Cliente> list() {
-        return clienteService.list();
+    public List<Cliente> listAll() {
+        return clienteService.listAll();
     }
 
     @Path("{id}")
