@@ -21,7 +21,7 @@ import static javax.ws.rs.core.Response.noContent;
 @Path("/cliente")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces({MediaType.APPLICATION_JSON})
-@Tag(name="cliente")
+@Tag(name="Crud de Cliente")
 public class ClienteResource {
 
     @Inject
