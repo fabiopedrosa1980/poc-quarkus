@@ -1,6 +1,7 @@
 package br.com.pedrosa.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
@@ -13,6 +14,7 @@ public class Cliente extends PanacheEntity {
     private String nome;
 
     @NotNull(message = "Idade é obrigatorio")
+    @Schema(minimum = "18")
     private Integer idade;
 
     public Cliente(){}
