@@ -31,7 +31,7 @@ public class ToleranciaFalhaResource {
         return "timeout";
     }
 
-    @Retry(maxRetries = 4) //indicado para client de outros ms
+    @Retry(maxRetries = 2) //indicado para client de outros ms
     @Fallback(fallbackMethod = "fallback")
     @GET
     @Path("retry")

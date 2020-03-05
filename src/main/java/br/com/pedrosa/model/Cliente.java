@@ -25,12 +25,10 @@ public class Cliente extends PanacheEntity {
         this.idade = idade;
     }
 
+
+    @Schema(hidden = true)
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {

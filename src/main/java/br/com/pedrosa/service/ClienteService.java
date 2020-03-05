@@ -2,7 +2,6 @@ package br.com.pedrosa.service;
 
 import br.com.pedrosa.model.Cliente;
 import br.com.pedrosa.repository.ClienteRepository;
-import io.quarkus.cache.CacheResult;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -20,6 +19,7 @@ public class ClienteService {
         return clienteRepository.listAll();
     }
 
+
     public Cliente getById(Long id) {
         return clienteRepository.findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
@@ -35,7 +35,6 @@ public class ClienteService {
                     return existente;
                 })
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
-
     }
 
     @Transactional
@@ -46,9 +45,8 @@ public class ClienteService {
 
     @Transactional
     public void deleteById(Long id) {
-        Cliente cliente = clienteRepository.findByIdOptional(id)
+        var cliente = clienteRepository.findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
         clienteRepository.delete(cliente);
-
     }
 }

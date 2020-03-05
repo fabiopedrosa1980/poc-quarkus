@@ -12,7 +12,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.net.URI;
 import java.util.List;
 
 import static javax.ws.rs.core.Response.created;
@@ -36,8 +35,8 @@ public class ClienteResource {
         return clienteService.listAll();
     }
 
-    @Path("{id}")
     @GET
+    @Path("{id}")
     @Operation(description = "Obter cliente por id",summary = "Obter cliente")
     public Cliente getById(@PathParam("id") Long id) {
         return clienteService.getById(id);
@@ -47,15 +46,15 @@ public class ClienteResource {
     @Operation(description = "Incluir cliente",summary = "Incluir cliente")
     public Response save(@Valid Cliente cliente) {
         clienteService.save(cliente);
-        URI location = uriInfo.getAbsolutePathBuilder()
+        var location = uriInfo.getAbsolutePathBuilder()
                 .path("{id}")
                 .resolveTemplate("id", cliente.getId())
                 .build();
         return created(location).entity(cliente).build();
     }
 
-    @Path("{id}")
     @PUT
+    @Path("{id}")
     @Operation(description = "Alterar o cliente do sistema",summary = "Altera cliente")
     public Cliente update(@PathParam("id") final Long id, @Valid Cliente cliente) {
         return clienteService.update(id,cliente);
