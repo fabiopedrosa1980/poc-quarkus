@@ -14,7 +14,6 @@ public class Cliente extends PanacheEntity {
     private String nome;
 
     @NotNull(message = "Idade é obrigatorio")
-    @Schema(minimum = "18")
     private Integer idade;
 
     public Cliente(){}
@@ -24,7 +23,6 @@ public class Cliente extends PanacheEntity {
         this.nome = nome;
         this.idade = idade;
     }
-
 
     @Schema(hidden = true)
     public Long getId() {

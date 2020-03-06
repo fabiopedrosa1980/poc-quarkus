@@ -22,16 +22,15 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class ToleranciaFalhaResource {
 
     @Timeout(1000) //indicado para client de outros ms
-    @Fallback(fallbackMethod = "fallback")
     @GET
     @Path("timeout")
     @Produces({MediaType.TEXT_PLAIN})
     public String timeout() throws InterruptedException {
         SECONDS.sleep(2l);
-        return "timeout";
+        return "timeout ok";
     }
 
-    @Retry(maxRetries = 2) //indicado para client de outros ms
+    @Retry(maxRetries = 1) //indicado para client de outros ms
     @Fallback(fallbackMethod = "fallback")
     @GET
     @Path("retry")
@@ -40,7 +39,7 @@ public class ToleranciaFalhaResource {
         if(new Random().nextBoolean()){
             throw new RuntimeException("Ops deu ruim");
         }
-        return "retry";
+        return "retry ok";
     }
 
     @CircuitBreaker(requestVolumeThreshold = 4,

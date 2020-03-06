@@ -20,7 +20,7 @@ import static javax.ws.rs.core.Response.noContent;
 @Path("/cliente")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces({MediaType.APPLICATION_JSON})
-@Tag(name="Crud de Cliente")
+@Tag(name="Api de Clientes")
 public class ClienteResource {
 
     @Inject
