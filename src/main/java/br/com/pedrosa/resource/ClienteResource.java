@@ -42,8 +42,6 @@ public class ClienteResource {
 
     @GET
     @Operation(description = "Listar todos os clientes",summary = "Listar clientes")
-    @RolesAllowed("user")
-    @SecurityRequirement(name = "quarkus-oauth")
     public List<Cliente> listAll() {
         return clienteService.listAll();
     }
@@ -68,6 +66,8 @@ public class ClienteResource {
 
     @PUT
     @Path("{id}")
+    @RolesAllowed("admin")
+    @SecurityRequirement(name = "quarkus-oauth")
     @Operation(description = "Alterar o cliente do sistema",summary = "Altera cliente")
     public Cliente update(@PathParam("id") final Long id, @Valid Cliente cliente) {
         return clienteService.update(id,cliente);
@@ -89,6 +89,5 @@ public class ClienteResource {
     public List<Cliente> search(@PathParam("nome") final String nome) {
         return clienteService.search(nome);
     }
-
 
 }
