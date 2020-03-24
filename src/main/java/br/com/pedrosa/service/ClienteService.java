@@ -16,7 +16,13 @@ public class ClienteService {
     ClienteRepository clienteRepository;
 
     public List<Cliente> listAll() {
+        //return Cliente.listAll(); //caso queira usar metodo da entidade
         return clienteRepository.listAll();
+    }
+
+
+    public List<Cliente> search(String nome) {
+        return clienteRepository.findByNome(nome);
     }
 
 
@@ -29,8 +35,8 @@ public class ClienteService {
     public Cliente update(Long id, Cliente cliente){
         return clienteRepository.findByIdOptional(id)
                 .map(existente -> {
-                    existente.setIdade(cliente.getIdade());
-                    existente.setNome(cliente.getNome());
+                    existente.idade = cliente.idade;
+                    existente.nome =  cliente.nome;
                     clienteRepository.persist(existente);
                     return existente;
                 })
@@ -45,7 +51,7 @@ public class ClienteService {
 
     @Transactional
     public void deleteById(Long id) {
-        var cliente = clienteRepository.findByIdOptional(id)
+        Cliente cliente = clienteRepository.findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
         clienteRepository.delete(cliente);
     }
