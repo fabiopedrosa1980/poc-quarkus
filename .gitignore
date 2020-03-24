@@ -9,6 +9,7 @@ bin/
 *.ipr
 *.iml
 *.iws
+lsp
 
 # NetBeans
 nb-configuration.xml
