@@ -14,7 +14,7 @@ public class ClienteResourceTest {
         given()
           .when().get("/clientes")
           .then()
-             .statusCode(401);
+             .statusCode(200);
     }
 
 }
