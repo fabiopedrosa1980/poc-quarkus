@@ -3,6 +3,17 @@
 Projeto exemplo com Quarkus Java
 Informações: https://quarkus.io/ .
 
+## Configure o postgres com Docker
+
+Use o seguinte comando do Docker para baixar a imagem:
+```
+./docker pull postgres
+```
+Executando o banco 
+```
+docker run --name quarkus -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=teste  -d postgres
+```
+
 ## Rodando em dev mode
 
 Use o seguite comando do Maven:
