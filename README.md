@@ -17,7 +17,7 @@ Isso produz o executável `poc-quarkus-1.0.0-SNAPSHOT-runner.jar` no diretorio `
 
 Para rodar a aplicação `java -jar target/poc-quarkus-1.0.0-SNAPSHOT-runner.jar`.
 
-## Cruando o executável nativo
+## Criando o executável nativo
 
 Voce cria usando: `./mvnw package -Pnative`.
 
