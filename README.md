@@ -3,7 +3,7 @@
 Projeto exemplo com Quarkus Java
 Informações: https://quarkus.io/ .
 
-## Configure o postgres com Docker
+## Configure o Postgres com Docker
 
 Use o seguinte comando do Docker para baixar a imagem:
 ```
