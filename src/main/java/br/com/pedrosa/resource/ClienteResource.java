@@ -28,10 +28,6 @@ import static javax.ws.rs.core.Response.noContent;
 @Produces({MediaType.APPLICATION_JSON})
 @Tag(name="Api de Clientes")
 @Path("/clientes")
-@SecurityScheme(securitySchemeName = "quarkus-oauth",
-        type = SecuritySchemeType.OAUTH2,
-        flows = @OAuthFlows(
-                password = @OAuthFlow(tokenUrl = "http://localhost:8080/auth/realms/quarkus/protocol/openid-connect/token")))
 public class ClienteResource {
 
     @Inject
@@ -66,8 +62,6 @@ public class ClienteResource {
 
     @PUT
     @Path("{id}")
-    @RolesAllowed("admin")
-    @SecurityRequirement(name = "quarkus-oauth")
     @Operation(description = "Alterar o cliente do sistema",summary = "Altera cliente")
     public Cliente update(@PathParam("id") final Long id, @Valid Cliente cliente) {
         return clienteService.update(id,cliente);
@@ -76,8 +70,6 @@ public class ClienteResource {
     @Path("{id}")
     @DELETE
     @Operation(description = "Excluir cliente por id",summary = "Exluir cliente")
-    @RolesAllowed("admin")
-    @SecurityRequirement(name = "quarkus-oauth")
     public Response delete(@PathParam("id") final Long id) {
         this.clienteService.deleteById(id);
         return noContent().build();

@@ -2,7 +2,6 @@ package br.com.pedrosa.service;
 
 import br.com.pedrosa.model.Cliente;
 import br.com.pedrosa.repository.ClienteRepository;
-import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -11,7 +10,6 @@ import javax.ws.rs.WebApplicationException;
 import java.util.List;
 
 @ApplicationScoped
-@Traced
 public class ClienteService {
 
     @Inject
