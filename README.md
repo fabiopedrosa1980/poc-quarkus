@@ -5,9 +5,12 @@ Informações: https://quarkus.io/ .
 
 ## Configure o Postgres com Docker
 
+Configure o Docker na sua maquina:
+Informações: https://www.docker.com/get-started.
+
 Use o seguinte comando do Docker para baixar a imagem:
 ```
-./docker pull postgres
+docker pull postgres
 ```
 Executando o banco 
 ```
