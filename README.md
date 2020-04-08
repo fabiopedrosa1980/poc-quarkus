@@ -3,6 +3,18 @@
 Projeto exemplo com Quarkus Java
 Informações: https://quarkus.io/ .
 
+API de Clientes com as seguintes extensions:
+- quarkus-resteasy
+- quarkus-resteasy-jsonb
+- quarkus-jdbc-postgresql
+- quarkus-hibernate-orm-panache
+- quarkus-hibernate-validator
+- quarkus-smallrye-openapi
+- quarkus-oidc
+- quarkus-smallrye-opentracing
+- quarkus-smallrye-fault-tolerance
+- quarkus-smallrye-health
+
 ## Configure o Postgres com Docker
 
 Use o seguinte comando do Docker para baixar a imagem:
@@ -78,7 +90,7 @@ Para saber mais como gerar imagens nativas acesse: https://quarkus.io/guides/bui
 
 - Link: http://localhost:16686
 - Escolha o service
-- 
+- clique em Find Traces
 
 ## Acessando o Health
 
