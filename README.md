@@ -54,7 +54,7 @@ Use o seguite comando do Maven:
 
 ## Empacotando e rodando
 
-A plicação é empacotada usando `./mvnw package`.
+A aplicação é empacotada usando `./mvnw package`.
 Isso produz o executável `poc-quarkus-1.0.0-SNAPSHOT-runner.jar` no diretorio `/target`.
 
 Para rodar a aplicação `java -jar target/poc-quarkus-1.0.0-SNAPSHOT-runner.jar`.
