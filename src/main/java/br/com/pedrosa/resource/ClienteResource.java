@@ -68,7 +68,7 @@ public class ClienteResource {
     @Path("{id}")
     @RolesAllowed("admin")
     @SecurityRequirement(name = "quarkus-oauth")
-    @Operation(description = "Alterar o cliente do sistema",summary = "Altera cliente")
+    @Operation(description = "Alterar o cliente do sistema",summary = "Alterar cliente")
     public Cliente update(@PathParam("id") final Long id, @Valid Cliente cliente) {
         return clienteService.update(id,cliente);
     }
