@@ -51,7 +51,7 @@ public class ClienteService {
 
     @Transactional
     public void deleteById(Long id) {
-        Cliente cliente = clienteRepository.findByIdOptional(id)
+        var cliente = clienteRepository.findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
         clienteRepository.delete(cliente);
     }

@@ -53,7 +53,7 @@ public class ClienteResource {
     @Operation(description = "Incluir cliente",summary = "Incluir cliente")
     public Response save(@Valid Cliente cliente) {
         clienteService.save(cliente);
-        URI location = uriInfo.getAbsolutePathBuilder()
+        var location = uriInfo.getAbsolutePathBuilder()
                 .path("{id}")
                 .resolveTemplate("id", cliente.getId())
                 .build();
