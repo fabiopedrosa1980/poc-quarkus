@@ -70,15 +70,18 @@ Rodando a imagem nativa: `./target/poc-quarkus-1.0.0-SNAPSHOT-runner`
 Para saber mais como gerar imagens nativas acesse: https://quarkus.io/guides/building-native-image-guide .
 
 ### Acessando o Keycloak
-Link: http://localhost:8080
+
+- Link: http://localhost:8080
 - Importe o arquivo realm com os usuarios e permissoes qaurkus-realm.json 
 
 ### Acessando o Jaeger
+
 Link: http://localhost:16686
 
 ### Acessando o Health
-Link Principal: http://localhost:8081/health
-Ready http://localhost:8081/health/ready
-Live http://localhost:8081/health/live
+
+- Link Principal: http://localhost:8081/health
+- Ready http://localhost:8081/health/ready
+- Live http://localhost:8081/health/live
 
 
