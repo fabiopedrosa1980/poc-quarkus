@@ -7,7 +7,7 @@ Informações: https://quarkus.io/ .
 
 Use o seguinte comando do Docker para baixar a imagem:
 ```
-./docker pull postgres
+docker pull postgres
 ```
 Executando o banco 
 ```
@@ -18,7 +18,7 @@ docker run --name quarkus -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=teste  
 
 Use o seguinte comando do Docker para baixar a imagem:
 ```
-./docker pull jboss/keycloak
+docker pull jboss/keycloak
 ```
 Executando o Keycloak 
 ```
@@ -28,7 +28,7 @@ docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
 
 Use o seguinte comando do Docker para baixar a imagem:
 ```
-./docker pull jaegertracing/all-in-one
+docker pull jaegertracing/all-in-one
 ```
 Executando o Jaeger 
 ```
@@ -69,16 +69,18 @@ Rodando a imagem nativa: `./target/poc-quarkus-1.0.0-SNAPSHOT-runner`
 
 Para saber mais como gerar imagens nativas acesse: https://quarkus.io/guides/building-native-image-guide .
 
-### Acessando o Keycloak
+## Acessando o Keycloak
 
 - Link: http://localhost:8080
 - Importe o arquivo realm com os usuarios e permissoes qaurkus-realm.json 
 
-### Acessando o Jaeger
+## Acessando o Jaeger
 
-Link: http://localhost:16686
+- Link: http://localhost:16686
+- Escolha o service
+- 
 
-### Acessando o Health
+## Acessando o Health
 
 - Link Principal: http://localhost:8081/health
 - Ready http://localhost:8081/health/ready
