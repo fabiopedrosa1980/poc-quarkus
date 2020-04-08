@@ -22,7 +22,7 @@ docker pull jboss/keycloak
 ```
 Executando o Keycloak 
 ```
-docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
+docker run --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
 ```
 ## Configure o Jaeger com Docker
 
@@ -63,7 +63,7 @@ Para rodar a aplicação `java -jar target/poc-quarkus-1.0.0-SNAPSHOT-runner.jar
 
 Voce cria usando: `./mvnw package -Pnative`.
 
-Or pelo Docker: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
+Ou pelo Docker: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
 
 Rodando a imagem nativa: `./target/poc-quarkus-1.0.0-SNAPSHOT-runner`
 
