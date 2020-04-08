@@ -18,7 +18,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.net.URI;
 import java.util.List;
 
 import static javax.ws.rs.core.Response.created;
@@ -48,6 +47,8 @@ public class ClienteResource {
 
     @GET
     @Path("{id}")
+    @RolesAllowed("user")
+    @SecurityRequirement(name = "quarkus-oauth")
     @Operation(description = "Obter cliente por id",summary = "Obter cliente")
     public Cliente getById(@PathParam("id") Long id) {
         return clienteService.getById(id);
@@ -57,7 +58,7 @@ public class ClienteResource {
     @Operation(description = "Incluir cliente",summary = "Incluir cliente")
     public Response save(@Valid Cliente cliente) {
         clienteService.save(cliente);
-        URI location = uriInfo.getAbsolutePathBuilder()
+        var location = uriInfo.getAbsolutePathBuilder()
                 .path("{id}")
                 .resolveTemplate("id", cliente.getId())
                 .build();

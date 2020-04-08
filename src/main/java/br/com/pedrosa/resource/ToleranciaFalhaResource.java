@@ -1,5 +1,9 @@
 package br.com.pedrosa.resource;
 
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
+import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.faulttolerance.Retry;
+import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.ws.rs.Consumes;
@@ -17,8 +21,8 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class ToleranciaFalhaResource {
 
 
-    //@Timeout(1000) //indicado para client de outros ms
-    //@Fallback(fallbackMethod = "fallback")
+    @Timeout(1000) //indicado para client de outros ms
+    @Fallback(fallbackMethod = "fallback")
     @GET
     @Path("timeout")
     @Produces({MediaType.TEXT_PLAIN})
@@ -27,8 +31,8 @@ public class ToleranciaFalhaResource {
         return "timeout ok";
     }
 
-    //@Retry(maxRetries = 1) //indicado para client de outros ms
-    //@Fallback(fallbackMethod = "fallback")
+    @Retry(maxRetries = 1) //indicado para client de outros ms
+    @Fallback(fallbackMethod = "fallback")
     @GET
     @Path("retry")
     @Produces({MediaType.TEXT_PLAIN})
@@ -39,15 +43,15 @@ public class ToleranciaFalhaResource {
         return "retry ok";
     }
 
-    //@CircuitBreaker(requestVolumeThreshold = 4,
-    //        failureRatio = 0.1,
-    //        delay = 10000,
-    //        successThreshold = 10)//indicado para client de outros ms
-    //@Fallback(fallbackMethod = "fallback")
+    // 3 estados --> Fechado | Meio Aberto | Aberto
+    @CircuitBreaker(requestVolumeThreshold = 4,
+            failureRatio = 0.1,
+            delay = 10000,
+            successThreshold = 10)//indicado para client de outros ms
+    @Fallback(fallbackMethod = "fallback")
     @GET
     @Path("circuit")
     @Produces({MediaType.TEXT_PLAIN})
-    // 3 estados Fechado | Meio Aberto | Aberto
     public String circuitBreak() {
         if(new Random().nextInt(3) >= 2){
             throw new RuntimeException("Ops deu ruim");

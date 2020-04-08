@@ -27,7 +27,6 @@ public class ClienteService {
         return clienteRepository.findByNome(nome);
     }
 
-
     public Cliente getById(Long id) {
         return clienteRepository.findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
@@ -53,7 +52,7 @@ public class ClienteService {
 
     @Transactional
     public void deleteById(Long id) {
-        Cliente cliente = clienteRepository.findByIdOptional(id)
+        var cliente = clienteRepository.findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
         clienteRepository.delete(cliente);
     }

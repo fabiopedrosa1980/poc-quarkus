@@ -1,3 +1,12 @@
 INSERT INTO Cliente (id,nome,idade) values (1,'Fabio Pedrosa', 39);
-INSERT INTO Cliente (id,nome,idade) values (2,'Eduardo Bregaida', 35);
+INSERT INTO Cliente (id,nome,idade) values (2,'Carlos Bregaida', 35);
 INSERT INTO Cliente (id,nome,idade) values (3,'Sheila Rodrigues', 35);
+INSERT INTO Cliente (id,nome,idade) values (4,'Alessandra Pedrosa', 39);
+INSERT INTO Cliente (id,nome,idade) values (5,'Jose da Silva', 35);
+INSERT INTO Cliente (id,nome,idade) values (6,'Shirlei Rodrigues', 35);
+INSERT INTO Cliente (id,nome,idade) values (7,'Maria Helena', 39);
+INSERT INTO Cliente (id,nome,idade) values (8,'Joao Paulo', 35);
+INSERT INTO Cliente (id,nome,idade) values (9,'Daniel Albuuqerque', 35);
+INSERT INTO Cliente (id,nome,idade) values (10,'Camila Pitanga', 39);
+INSERT INTO Cliente (id,nome,idade) values (11,'Sergio Reis', 35);
+INSERT INTO Cliente (id,nome,idade) values (12,'Alan Silva', 35);
