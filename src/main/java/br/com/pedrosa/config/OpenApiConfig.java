@@ -19,5 +19,5 @@ import javax.ws.rs.core.Application;
                         name = "Apache 2.0",
                         url = "http://www.apache.org/licenses/LICENSE-2.0.html"))
 )
-public class ClientApplication extends Application {
+public class OpenApiConfig extends Application {
 }

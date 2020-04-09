@@ -30,7 +30,7 @@ public class ClienteResource {
     UriInfo uriInfo;
 
     @GET
-    @Operation(description = "Listar todos os clientes",summary = "Listar clientes")
+    @Operation(description = "Listar todos os clientes",summary = "Listar clientes ")
     public List<Cliente> listAll() {
         return clienteService.listAll();
     }
@@ -38,7 +38,7 @@ public class ClienteResource {
     @GET
     @Path("{id}")
     @Operation(description = "Obter cliente por id",summary = "Obter cliente")
-    public Cliente getById(@PathParam("id") Long id) {
+    public Cliente getById(@PathParam("id") final Long id) {
         return clienteService.getById(id);
     }
 
