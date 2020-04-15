@@ -16,8 +16,8 @@ public class ClienteService {
     ClienteRepository clienteRepository;
 
     public List<Cliente> listAll() {
-        return Cliente.listAll(); //caso queira usar metodo da entidade
-        //return clienteRepository.listAll();
+        //return Cliente.listAll(); //caso queira usar metodo da entidade
+        return clienteRepository.listAll();
     }
 
 

@@ -19,7 +19,7 @@ import static javax.ws.rs.core.Response.noContent;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces({MediaType.APPLICATION_JSON})
-@Tag(name="Api de Clientes")
+@Tag(name="Api de Clientes Apresentacao")
 @Path("/clientes")
 public class ClienteResource {
 

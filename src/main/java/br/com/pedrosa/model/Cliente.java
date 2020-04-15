@@ -10,15 +10,15 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Cliente extends PanacheEntity {
 
+    @Schema(hidden = true)
+    public Long getId() {
+        return id;
+    }
+
     @NotEmpty(message = "Nome é obrigatorio")
     public String nome;
 
     @NotNull(message = "Idade é obrigatorio")
     public Integer idade;
-
-    @Schema(hidden = true)
-    public Long getId() {
-        return id;
-    }
 
 }
