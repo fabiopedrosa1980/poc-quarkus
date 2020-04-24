@@ -31,6 +31,7 @@ import static javax.ws.rs.core.Response.noContent;
         type = SecuritySchemeType.OAUTH2,
         flows = @OAuthFlows(
                 password = @OAuthFlow(tokenUrl = "http://localhost:8080/auth/realms/quarkus/protocol/openid-connect/token")))
+@SecurityRequirement(name="quarkus-auth")
 public class ClienteResource {
 
     @Inject
@@ -47,7 +48,7 @@ public class ClienteResource {
 
     @GET
     @Path("{id}")
-    @RolesAllowed("user")
+    @RolesAllowed({"user","admin"})
     @SecurityRequirement(name = "quarkus-oauth")
     @Operation(description = "Obter cliente por id",summary = "Obter cliente")
     public Cliente getById(@PathParam("id") Long id) {
@@ -56,6 +57,7 @@ public class ClienteResource {
 
     @POST
     @Operation(description = "Incluir cliente",summary = "Incluir cliente")
+    @RolesAllowed({"user","admin"})
     public Response save(@Valid Cliente cliente) {
         clienteService.save(cliente);
         var location = uriInfo.getAbsolutePathBuilder()
@@ -87,6 +89,7 @@ public class ClienteResource {
     @GET
     @Path("search/{nome}")
     @Operation(description = "Pesquisar clientes por Nome",summary = "Pesquisar clientes por Nome")
+    @RolesAllowed({"user","admin"})
     public List<Cliente> search(@PathParam("nome") final String nome) {
         return clienteService.search(nome);
     }

@@ -17,11 +17,10 @@ public class ClienteService {
     @Inject
     ClienteRepository clienteRepository;
 
+    //@CacheResult(cacheName = "listClientes", lockTimeout = 10)
     public List<Cliente> listAll() {
-        //return Cliente.listAll(); //caso queira usar metodo da entidade
         return clienteRepository.listAll();
     }
-
 
     public List<Cliente> search(String nome) {
         return clienteRepository.findByNome(nome);
