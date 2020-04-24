@@ -1,5 +1,7 @@
 package br.com.pedrosa.service;
 
+import br.com.pedrosa.config.ModelMapeprConfig;
+import br.com.pedrosa.dto.ClienteDTO;
 import br.com.pedrosa.model.Cliente;
 import br.com.pedrosa.repository.ClienteRepository;
 
@@ -8,6 +10,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.WebApplicationException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class ClienteService {
@@ -15,38 +18,44 @@ public class ClienteService {
     @Inject
     ClienteRepository clienteRepository;
 
-    public List<Cliente> listAll() {
-        //return Cliente.listAll(); //caso queira usar metodo da entidade
-        return clienteRepository.listAll();
+    @Inject
+    ModelMapeprConfig modelMapeprConfig;
+
+    public List<ClienteDTO> listAll() {
+        return clienteRepository.streamAll()
+                .map(this::getClienteDTO)
+                .collect(Collectors.toList());
     }
 
-
-    public List<Cliente> search(String nome) {
-        return clienteRepository.findByNome(nome);
+    public List<ClienteDTO> search(String nome) {
+        return clienteRepository.findByNome(nome)
+                .map(this::getClienteDTO)
+                .collect(Collectors.toList());
     }
 
-
-    public Cliente getById(Long id) {
+    public ClienteDTO getById(Long id) {
         return clienteRepository.findByIdOptional(id)
+                .map(this::getClienteDTO)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
     }
 
     @Transactional
-    public Cliente update(Long id, Cliente cliente){
+    public ClienteDTO update(Long id, ClienteDTO clienteDTO){
         return clienteRepository.findByIdOptional(id)
                 .map(existente -> {
-                    existente.idade = cliente.idade;
-                    existente.nome =  cliente.nome;
+                    existente.idade = clienteDTO.getIdade();
+                    existente.nome =  clienteDTO.getNome();
                     clienteRepository.persist(existente);
-                    return existente;
+                    return getClienteDTO(existente);
                 })
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
     }
 
     @Transactional
-    public Cliente save(Cliente cliente) {
+    public ClienteDTO save(ClienteDTO clienteDTO) {
+        var cliente = getCliente(clienteDTO);
         clienteRepository.persist(cliente);
-        return cliente;
+        return getClienteDTO(cliente);
     }
 
     @Transactional
@@ -54,5 +63,13 @@ public class ClienteService {
         var cliente = clienteRepository.findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Cliente nao encontrado",404));
         clienteRepository.delete(cliente);
+    }
+
+    private ClienteDTO getClienteDTO(Cliente cliente){
+        return modelMapeprConfig.modelMapper().map(cliente,ClienteDTO.class);
+    }
+
+    private Cliente getCliente(ClienteDTO clienteDTO){
+        return modelMapeprConfig.modelMapper().map(clienteDTO,Cliente.class);
     }
 }
