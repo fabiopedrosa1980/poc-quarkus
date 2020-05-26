@@ -36,6 +36,11 @@ Executando o Keycloak
 ```
 docker run --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
 ```
+## Acessando o Keycloak
+
+- Link: http://localhost:8080
+- Importe o arquivo realm com os usuarios e permissoes qaurkus-realm.json 
+
 ## Configure o Jaeger com Docker
 
 Use o seguinte comando do Docker para baixar a imagem:
@@ -80,11 +85,6 @@ Ou pelo Docker: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
 Rodando a imagem nativa: `./target/poc-quarkus-1.0.0-SNAPSHOT-runner`
 
 Para saber mais como gerar imagens nativas acesse: https://quarkus.io/guides/building-native-image-guide .
-
-## Acessando o Keycloak
-
-- Link: http://localhost:8080
-- Importe o arquivo realm com os usuarios e permissoes qaurkus-realm.json 
 
 ## Acessando o Jaeger
 
