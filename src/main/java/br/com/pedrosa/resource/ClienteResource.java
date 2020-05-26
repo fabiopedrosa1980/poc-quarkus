@@ -93,5 +93,4 @@ public class ClienteResource {
     public List<Cliente> search(@PathParam("nome") final String nome) {
         return clienteService.search(nome);
     }
-
 }
