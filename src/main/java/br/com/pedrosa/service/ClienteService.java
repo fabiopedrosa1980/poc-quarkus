@@ -54,6 +54,7 @@ public class ClienteService {
     @Transactional
     public ClienteDTO save(ClienteDTO clienteDTO) {
         var cliente = getCliente(clienteDTO);
+        var c = new Cliente();
         clienteRepository.persist(cliente);
         return getClienteDTO(cliente);
     }

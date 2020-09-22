@@ -9,12 +9,12 @@ import javax.ws.rs.core.Application;
 
 @OpenAPIDefinition(
         info = @Info(
-                title="API com Quarkus",
+                title="API de Clientes  Quarkus",
                 version = "1.0.1",
                 contact = @Contact(
-                        name = "Fabio Pedrosa",
-                        url = "https:/www.thebestdevs.com.br",
-                        email = "contatot@thebestdevs.com.br"),
+                        name = "API Clientes",
+                        url = "http://www.thebestdevs.com.br",
+                        email = "bito.pedrosa@gmail.com"),
                 license = @License(
                         name = "Apache 2.0",
                         url = "http://www.apache.org/licenses/LICENSE-2.0.html"))
